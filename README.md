@@ -8,3 +8,27 @@ There are two case studies explored:
 
 - [Perceiving a human driver's state while in a self-driving car](https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/)
 
+The **DNN** contains the DNN used for both setups. The specific models trained can be found in the respective directories. Please refer to the individual directories for more details on running the separate experiments.
+
+### Prerequisites
+#### DNN
+- tensorflow>=2.2
+- pandas
+- sklearn
+- netcal==1.1.3
+- scriptify
+- matplotlib
+- statsmodels
+- tensorflow-probability 
+
+### Robot collision mitigation
+- box2d
+- PRISM
+- python3
+- numpy
+- matplotlib
+
+### SafeSCAD
+- PRISM
+- python3
+- matplotlib
