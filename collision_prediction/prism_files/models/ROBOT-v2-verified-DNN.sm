@@ -1,0 +1,93 @@
+dtmc
+
+// A mobile robot travels through an environment where it may encounter and potentially collide 
+// with another moving autonomous agent. The collisions are not catastrophic, they do inflict 
+// damage to the robot, such that expensive maintenance is needed after multiple collisions. 
+// To limit the number of collisions, the robot checks, every X seconds,
+// - whether the collider is present
+// - and, if the collider is present, whether it is on collision course with the robot within 
+//   the next X seconds  
+// A controller decides, after each check that identifies the presence of the collider,
+// whether the robot should move to a new waypoint within the next X seconds, or wait for 
+// a short period of time at its current location.
+// We have two conflicting requirements:
+// - we want to minimise the time required to reach the next waypoint
+// - we want to minimise the probability of collision before reaching the next waypoint
+
+const double pColliderPresent = 0.8;
+const double pCollision=0.25;
+
+
+const double pVerif0WhenClass0 = 0.392309642915;
+const double pVerif0WhenClass1 = 0.558441558442;
+const double pVerif1WhenClass0 = 0.607690357085;
+const double pVerif1WhenClass1 = 0.441558441558;
+
+const double pClass0AsClass0Verif0 = 0.5036432013162534;
+const double pClass0AsClass1Verif0 = 0.4963567986837466;
+const double pClass1AsClass0Verif0 = 0.11245619624084104;
+const double pClass1AsClass1Verif0 = 0.887543803759159;
+
+const double pClass0AsClass0Verif1 = 0.9519745077956071;
+const double pClass0AsClass1Verif1 = 0.04802549220439285;
+const double pClass1AsClass0Verif1 = 0.072522159548751;
+const double pClass1AsClass1Verif1 = 0.927477840451249;
+
+module Robot
+  s : [0..3] init 0;    // 0=initial position; 1=collider present; 2=travel; 3=done 
+  oncc : [0..1] init 0; // 0=not on collision course; 1=on collision course 
+  z : [0..1] init 1;
+  v : [0..1] init 0;
+
+  [check]   !c & s=0 -> pColliderPresent*(1-pCollision)*pVerif0WhenClass0*pClass0AsClass0Verif0:(s'=1)&(oncc'=0)&(v'=0)&(z'=0)
+                       +pColliderPresent*(1-pCollision)*pVerif0WhenClass0*pClass0AsClass1Verif0:(s'=1)&(oncc'=0)&(v'=0)&(z'=1)
+                       +pColliderPresent*pCollision*pVerif0WhenClass1*pClass1AsClass0Verif0:(s'=1)&(oncc'=1)&(v'=0)&(z'=0)
+                       +pColliderPresent*pCollision*pVerif0WhenClass1*pClass1AsClass1Verif0:(s'=1)&(oncc'=1)&(v'=0)&(z'=1)
+                       +pColliderPresent*(1-pCollision)*pVerif1WhenClass0*pClass0AsClass0Verif1:(s'=1)&(oncc'=0)&(v'=1)&(z'=0)
+                       +pColliderPresent*(1-pCollision)*pVerif1WhenClass0*pClass0AsClass1Verif1:(s'=1)&(oncc'=0)&(v'=1)&(z'=1)
+                       +pColliderPresent*pCollision*pVerif1WhenClass1*pClass1AsClass0Verif1:(s'=1)&(oncc'=1)&(v'=1)&(z'=0)
+                       +pColliderPresent*pCollision*pVerif1WhenClass1*pClass1AsClass1Verif1:(s'=1)&(oncc'=1)&(v'=1)&(z'=1)
+                       +(1-pColliderPresent):(s'=2)&(oncc'=0);
+
+  [retry]   !c & s=1 & wait -> 1:(s'=0);
+  [proceed] !c & s=1 & !wait -> 1:(s'=2);
+
+  [travel]  !c & s=2 -> 1:(s'=3);
+  [done]    !c & s=3 -> 1:(s'=3);  
+endmodule
+
+module Switch
+  c : bool init false;
+
+  [check]  !c -> 1:(c'=true);
+  [respond] c -> 1:(c'=false);
+endmodule
+
+const double x1Verif0;
+const double x1Verif1;
+const double x2Verif0;
+const double x2Verif1;
+
+module Controller
+  wait : bool init false;
+
+  [respond] c & z=0 & v=0 ->  x1Verif0:(wait'=true) + (1-x1Verif0):(wait'=false);
+  [respond] c & z=0 & v=1 ->  x1Verif1:(wait'=true) + (1-x1Verif1):(wait'=false);
+  [respond] c & z=1  & v=0 ->  x2Verif0:(wait'=true) + (1-x2Verif0):(wait'=false);
+  [respond] c & z=1  & v=1 ->  x2Verif1:(wait'=true) + (1-x2Verif1):(wait'=false);
+endmodule
+
+
+rewards "risk"
+  [proceed] oncc=1 : 100;
+endrewards
+
+rewards "time"
+  [retry]   true : 5;
+//  [proceed] oncc=1: 0.5;
+  [proceed] oncc=1 : 2.57;
+//  [travel]  true : 2;
+  [travel]  true : 9.95;
+endrewards
+
+label "collision" = s=2 & oncc=1;

@@ -1,0 +1,75 @@
+For experiments reported in the NMI paper, we are using the options specified under gloro for SafeScad2 and Collision.
+
+---------------------------------
+Conda Environment: tf-2.2 with tensorflow==2.2 and netcal==1.1.3
+------------------------
+Interpreting file names
+------------------------
+conf_00 - not confident and not robust 
+conf_01 - not confident but robust
+conf_10 - confident but not robust
+conf_11 - confident and robust
+
+-------------------------------
+Interpreting confusion matrices
+-------------------------------
+For SafeScad, the labels = [fast, med_fast, med, med_slow, slow]
+For Collision Detection, the labels = [collision, no_collision]
+
+The matrices are printed such that (i,j)th entry is the number of samples where the actual label is labels[i] and the predicted label is labels[j].
+
+----------------------
+Experiment parameters for randomized smoothing:
+----------------------
+Data Split: 48% train, 12% calibration, 20% test, 20% set aside for simulation
+
+SafeScad:
+- Data: 20% of total data, randomly chosen
+- Threshold = 0.7
+- epsilon for local robustness = 0.05
+- noise/sigma for randomized smoothing = 0.1
+- epochs = 200
+- batch size = 128
+- number of samples for randomized smoothing = 10000
+- initial learning rate = 0.01
+
+Collision:
+- Data: all data
+- Threshold = 0.8
+- epsilon for local robustness = 0.05
+- noise/sigma for randomized smoothing = 0.1
+- epochs = 100
+- batch size = 128
+- number of samples for randomized smoothing = 10000
+- initial learning rate = 0.005
+
+----------------------
+Experiment parameters for gloro:
+----------------------
+Data Split: 48% train, 12% calibration, 20% test, 20% set aside for simulation
+
+SafeScad:
+- Data: 20% of total data, randomly chosen (All_Features_ReactionTime.csv)
+- Threshold = 0.7
+- epsilon for local robustness = 0.05
+- epochs = 200
+- batch size = 512
+- initial learning rate = 0.01
+
+SafeScad2:
+- Data: All data (new_features_cumulated_100NEW.csv)
+- Threshold = 0.7
+- epsilon for local robustness = 0.01
+- epochs = 100
+- batch size = 128
+- initial learning rate = 0.01
+
+Collision: 
+- Training with gloro=F
+- Skewed2 folders contain models trained with even data
+- Data: all data
+- Threshold = 0.8
+- epsilon for local robustness = 0.05
+- epochs = 100
+- batch size = 32
+- initial learning rate = 0.005
