@@ -1,0 +1,25 @@
+
+  <header id="site_head"><!--useful to create the 960px limit-->
+    <div class="header_cont">
+
+          <div id="imlogo">
+            <a href="index.html"><img src="{{ site.baseurl }}/images/logo.gif" width="120" height="120" alt="Logo"></a>
+          </div>
+
+          <div id="namelogo">
+            <span>Colin Paterson</span>
+             Lecturer
+          </div>
+
+          <nav class="head_nav">
+            <ul>
+              <li {% if page.title == "home" %}class="active"{% else %}class="cv"{% endif %}><a href="{{ site.baseurl }}/index.html">home</a></li>
+              <li {% if page.title == "publications" %}class="active"{% else %}class="cv"{% endif %}><a href="{{ site.baseurl }}/publications.html">publications</a></li>
+              <li {% if page.title == "education" %}class="active"{% else %}class="cv"{% endif %}><a href="{{ site.baseurl }}/education.html">education</a></li>
+              <li {% if page.title == "cv" %}class="active"{% else %}class="cv"{% endif %}><a href="{{ site.baseurl }}/CV.html">CV</a></li>
+              <li {% if page.title == "resources" %}class="active"{% else %}class="cv"{% endif %}><a href="{{ site.baseurl }}/headstart.html">resources</a></li>
+              <!--li {% if page.title == "interests" %}class="active"{% else %}class="cv"{% endif %}><a href="interests.html">interests</a></li-->
+            </ul>
+          </nav>
+    </div>
+  </header>

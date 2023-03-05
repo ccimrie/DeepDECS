@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "But which model?"
+date:   2020-04-07 11:00:00 +0000
+---
+
+<p>In traditional software engineering having access to source code allows you to build a model which is identical to that produced by the originating author. For machine learning however it's not quite that simple.
+</p>
+
+<p>There are many examples on the internet and books on the shelves which can teach the novice ML developer how to construct a model. Indeed sites commonly provide users with python code which describes precisely the structure of the model to be created. It is reasonable to imagine that if you use this code along with the same training data as the authors that you will obtain the same model. 
+</p>
+<p>Unfortunately, in the world of ML, it doesn't work like that!
+</p>
+<p>So let's consider the MNIST digit dataset. 
+</p>
+<center>
+<img src="{{site.baseurl}}/images/blog/whichModel/original_MNIST.png" width=600px>
+<br/>
+Sample of the MNIST dataset
+</center>
+<br/>
+<p>
+This dataset is a common starter set for classification tasks. The aim is to build a model which, when shown a digit, is able to say which integer value 0 to 9 is being shown. There are many examples of how to build a convolution neural network (CNN) which achieves accuracy of over 99%. Example code to build such a model is given [<a href="{{baseurl}}/resources/blog/whichModel/BuildSingleModel.txt" target="blank">click here</a>] and a supporting file to generate confusion matricies is provided [<a href="{{baseurl}}/resources/blog/whichModel/plot_confusion_matrix.txt" target="blank">click here</a>].
+</p>
+<p>
+The code snippet  below is taken from that file, which creates a CNN with 2 convolutional layers. The resultant model reports an accuracy of 0.9914%.
+</p>
+<pre>
+	<code>
+# This next section defines the structure of our model
+model = Sequential()
+model.add(Conv2D(32, kernel_size=(3, 3),
+                 activation='relu',
+                 input_shape=input_shape))
+model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(128, name='dense_out', activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(num_classes, activation='softmax'))		
+	</code>
+</pre>
+<p>
+Having built the model we can visualise its performance as a confusion matrix. We ask the model to predict digits for the test set and note were the model is correct and, if it is wrong, what prediction it made. Below is the confusion matrix I obtained by running the model reported above.
+</p>
+
+<p>
+<center>
+<img src="{{site.baseurl}}/images/blog/whichModel/cm_1.png" width = 400px/><br/>
+Confusion Matrix for MNIST model
+</center>
+</p>
+<p>
+To understand how a confusion matrix works consider digit 6 we see that 950 samples in the test set were correctly identified but three where misclassified as a 0, one as 1, one as a four etc.
+</p>
+<p>
+So, what happens if, without chaning anything, I run the code to create the model again?
+</p>
+<p>
+This time I obtain a model with an accuray of 0.9921%. So my model, on the face of it, has improved.  Here is the associated confusion matrix for the new model.
+</p>
+<center>
+<img src="{{site.baseurl}}/images/blog/whichModel/cm_2.png" width = 400px/>
+<br/>
+Confusion Matrix for MNIST model
+</center>
+<br/>
+<p>
+So has it imrpoved? The accuracy reported is an aggregate score over all the classes. If we look at individual classes we can see that model 2 is better at clssifying some digits and worse for others. Indeed for the digit 6 it only gets 948 correct this time. We might conclude that this model is more likely to report a 5 when it sees a 6 than the initial model.
+</p>
+<p>
+Indeed every time I run the model fitting I get a slightly different model. This is because the model fitting undertaken in most machine learning makes use of stochastic processes. We start from an initial state which is randonly selected, we split our training data randomly as the training proceeds. If we make different choices then we end up in a different place and hence with a different model. We can fix the random seed to make sure we always get the same model, but how can we be sure that this model is the best possible?
+</p>
+<h1> So what? </h1>
+<p>Now for MNIST this problem of getting slightly different results doesn't matter in the slightest, it is pretty much perfect and the problem of digit recognition is of little real world interest. But let us consider now a model used to identify medical conditions or objects in an autonomous car's field of vision. The problem of stochastic varition persists.
+</p>
+<p>
+Suddenly knowing that you have the best possible model matters immensely. It's now clear that any model we generate is only one of many possible models, how can I be sure I have the best model and what does "best" mean? is it better to misclassify a car as a construction vehicle or an ambulance? Is it better to recommend surgery or medication in error when no action is really needed?
+</p>
+<p>
+Furthermore, given the stochastic nature of the machine learning process, it is not even  a simple task to know if the changes we make to model structures and datasets are real improvements or if the training cycle has just been lucky (or indeed unlucky).
+</p>
+<p>
+What we need is not only better models but better methods to help us reason about the decisions we make based on predictions from these models.
+</p>

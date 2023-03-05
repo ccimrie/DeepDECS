@@ -1,0 +1,71 @@
+.navsummary{
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 20px 15px 10px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.navsummary {
+	list-style: none; /* this removes the list marker */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+	width: 200px;
+	padding: 5px 5px 5px 15px;
+	display: block; 
+}
+
+ul.navsummary li {
+	color:#fff;
+	border-bottom: 1px solid #c9c9c0; /* this creates the button separation */
+/*	
+	-moz-border-radius: 10px;		
+	-khtml-border-radius: 10px;				
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+*/	margin: 5px;
+	padding: 5px;
+	font-size:16px;
+}
+
+
+ul.navsummary a, ul.navsummary a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	width: 160px;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+/*	background-color: #8badc2;
+*/}
+
+
+ul.navsummary a:hover,  ul.navsummary a:active,   ul.navsummary a:focus {
+	background: #8badc2;
+	color: #FFF;
+}
+
+
+.sidebar1 {
+	float: left;
+	width: 200px;
+	padding-bottom: 10px;
+	clear:left;
+	margin: -15px 20px 5px -20px;
+}
+
+
+.sidebar1 ul li a{
+color: #232974;
+}
+
+.content {
+
+	padding: 10px 0px;
+	width: 660px;
+	float: left;
+	clear:right;	
+	margin: -25px 0px 5px 10px;
+
+}
+
+
+
