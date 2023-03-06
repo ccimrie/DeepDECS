@@ -19,7 +19,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 div.pad-left {
-  width: 30%;
+  width: 35%;
   padding-left: 0px;
   padding-right: 0px;
   float:  left;
@@ -28,7 +28,7 @@ div.pad-left {
   justify-content: center;
 }
 div.text-middle {
-  width: 40%;
+  width: 30%;
   padding-left: 20px;
   padding-right: 20px;
   float:  left;
@@ -40,10 +40,10 @@ div.text-left {
   float:  left;
 }
 div.text-right {
-  width: 70%;
-  padding-left: 150px;
-  padding-right: 0px;
-  float:  left;
+  width: 60%;
+  padding-left: 100px;
+  padding-right: 100px;
+  /*float:  left;*/
 }
 div.button-centre
 {
@@ -64,7 +64,7 @@ div.image-centre
 div.image-left
 {
   width: 30%;
-  padding-left: 10px;
+  padding-left: 100px;
   padding-right: 10px;
   align-items: center;
   justify-content: center;
@@ -84,6 +84,12 @@ div.col {
   padding: 1em;
   border: solid;
 }
+div.centre-div
+{
+  align-items: center;
+  justify-content: center;
+  display:  flex;
+}
 </style>
 </head>
 <body>
@@ -93,7 +99,7 @@ div.col {
   <h1 class="w3-margin w3-jumbo">DeepDECS</h1>
   <h1 class="w3-xxlarge">Capturing Perception's Uncertainty</h1>
   <h1 class="w3-xxlarge">for Controller Synthesis </h1>
-  <h1 class="w3-margin w3-large">Radu Calinescu, Calum Imrie, Ravi Mangal, Genaína Nunes Rodrigues,Corina P ̆as ̆areanu, Misael Alpizar Santana, and Gricel Vázquez</h1>
+  <h1 class="w3-margin w3-large">Radu Calinescu, Calum Imrie, Ravi Mangal, Genaína Nunes Rodrigues,Corina P<span>&#259;</span>s<span>&#259;</span>reanu, Misael Alpizar Santana, and Gricel Vázquez</h1>
   <!-- <p class="w3-xlarge">Template by w3.css</p> -->
   <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button> -->
 </header>
@@ -164,8 +170,8 @@ div.col {
 </div>
 
 <!-- Grid 4: Case Studies -->
-<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
-  <div class="w3-content row">
+<div class="w3-light-grey w3-padding-32 w3-container">
+  <div class="row">
     <div class="image-left w3-center">
       <div>
         <video width="563" height="422" controls>
@@ -178,8 +184,14 @@ div.col {
     </div>
     <div class="text-right">
       <h1>Case Studies</h1>
-      <h5 class="w3-padding-32">Mobile robot collision avoidance & Shared autonomy for driving</h5>
-      <p class="w3-text-grey"></p>
+      <h5 class="w3-padding-4">Mobile robot collision avoidance & Shared autonomy for driving</h5>
+      <p class="w3-text-grey">To evaluate DeepDECS two case studies were studied. The first is a robot in a warehouse where it must travel from one point to another in a known map. The robot navigates by traversing waypoints, and finds the shortest route using Dijkstra's algorithm. The robot, however, is not the only agent operating in the warehouse, and now the robot must also minimise dangerous collisions. At each waypoint the robot first detects if a collider is present, and if so uses a DNN to predict whether a collision will occur if the robot proceeds. The video on the left shows the robot utilising a safe controller synthesised from the DeepDECS framework.</p>
+
+      <p class="w3-text-grey">The second case study focused on <a href="https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/" target="_blank">shared control in autonomous driving</a>, see the image on the left. Given the complexity there will be times while driving that the autonomous car will not be able to operate, thus transferring control over to the human driver. This therefore requires the human driver to be alert at all times should a transfer of control is required. The car predicts the human driver's attentiveness using a DNN, and needs to decide which alerts to use if the human driver is not paying attention, such as lights, vibration and sound. For this case study real data was used of human drivers in a simulated scenario.</p>
+
+      <p class="w3-text-grey">For more detail on the case studies you can read the paper. Access to the code and models can be found on this <a href="https://www.github.com/ccimrie/DeepDECS" target="_blank"> repo</a>.</p>
+
+      <p class="w3-text-grey">This project has received funding from the UKRI project ‘Trustworthy Autonomous Systems Node in Resilience’, the UKRI Global Research and Innovation Programme, and the Assuring Autonomy International Programme. The authors are grateful to the developers of the DeepTake deep neural network25 for sharing the DeepTake data sets, and to the University of York’s Viking research computing cluster team for providing access to their systems.
     </div>
   </div>
 
