@@ -22,31 +22,26 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
-div.pad-left {
-  width: 35%;
-  padding-left: 0px;
-  padding-right: 0px;
+div.pdf-aug {
+  width:  35%;
   float:  left;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 div.text-middle {
-  width: 30%;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 20%;
+  max-width: 100%;
   float:  left;
 }
 div.text-left {
-  width: 60%;
-  padding-left: 350px;
-  padding-right: 20px;
+  width: 35%;
+  max-width: 100%;
   float:  left;
 }
 div.text-right {
-  width: 60%;
-  padding-left: 100px;
-  padding-right: 100px;
+  width: 35%;
+  max-width: 100%;
   /*float:  left;*/
 }
 div.button-centre
@@ -56,20 +51,22 @@ div.button-centre
   justify-content: center;
   display:  flex;
 }
+div.centre-div
+{
+  align-items: center;
+  justify-content: center;
+  display:  flex;
+}
 div.image-centre
 {
-  width: 30%;
-  padding-left: 20px;
-  padding-right: 50px;
+  width: 45%;
   align-items: center;
   justify-content: center;
   display:  flex;
 }
 div.image-left
 {
-  width: 30%;
-  padding-left: 100px;
-  padding-right: 10px;
+  width: 35%;
   align-items: center;
   justify-content: center;
   display:  flex;
@@ -80,6 +77,7 @@ div.push-right
 }
 div.row
 {
+  width:  100%
   display: flex;
 }
 div.col {
@@ -109,8 +107,8 @@ div.centre-div
 </header>
 
 <!-- Grid 1: DeepDECS -->
-<div class="w3-row-padding w3-padding-32 w3-container">
-  <div class="row">
+<div class="w3-padding-32 w3-container">
+  <div class="row centre-div">
     <div class="text-left">
       <h1>DeepDECS</h1>
       <h5 class="w3-padding-4">Framework for safer controllers</h5>
@@ -119,53 +117,42 @@ div.centre-div
 
       <p class="w3-text-grey">The diagram on the right is the DeepDECS framework, and as can be seen DeepDECS requires four components from the user. First a discrete time Markov Chain (DTMC) of the application the autonomous system is to operate within, and second a requirements file defined via probabilistic computation tree logic (PCTL) notation. It is important to note that the DTMC provided will assume that the perception of the system is perfect. Lastly a pre trained perception DNN to be utilised in the autonomous system, and along an accompanying representative test dataset. These last two components are utilised, along with \(n\) verification methods, in step 1 of DeepDECS to derive a set of \(2^{n}\) confusion matrices. The accuracy derived from the confusion matrices will be the probabilities for our generated augmented DTMC, step 2 of DeepDECS. Our augmented model now contains an accurate representation of the imperfect perception unit. Step 3 of DeepDECS is controller synthesis, achieved via formal methods with the augmented DTMC and PCTL requirements.</p>
     </div>
-
-    <div class="w3-padding-small w3-center image-centre">
-      <!-- <i class="fa images/DeepDECS-approach.pdf w3-padding-64 w3-text-red"></i> -->
-      <!-- <embed src="images/DeepDECS-approach.png" width="708px" height="345px" /> -->
-      <embed src="images/DeepDECS-approach.png" width="566px" height="276px" />
+    <div class="w3-center image-centre">
+      <embed style='height: 95%; width: 95%; object-fit: contain' src="images/DeepDECS-approach.png"/>
     </div>
   </div>
 </div>
 
 <!-- Grid 2: Augment tool -->
 <div class="w3-light-grey w3-padding-32 w3-container">
-  <div style="width: 100%">
-
-    <div class="pad-left">
-      <embed src="images/generic-pDTMC.pdf" width="500" height="375" type="application/pdf"/>
-      <big><big><big><big><big><big><big><big><big><big><big><big>
-        <span>&#10509;</span>
-      </big></big></big></big></big></big></big></big></big></big></big></big>
+  <div class="row centre-div">
+    <div class="pdf-aug">
+      <embed src="images/generic-pDTMC.pdf" width="80%" height="350px" type="application/pdf"/>
+      <embed style='height: 100%; width: 15%; object-fit: contain' src="images/arrow.png"/>
     </div>
-
     <div class="text-middle">
       <h1>Augment Tool</h1>
       <h5 class="w3-padding-4">Incorporating uncertainty</h5>
       <p class="w3-text-grey">An augmentation tool was created to generate the parametric DTMC (pDTMC) from the perfect perception pDTMC and the confusion matrices generated from step 1 of DeepDECS. For the tool to work it needs to follow the structure displayed on the left, and it will output the structure on the right. The tool along with more details can be found <a href="https://github.com/ccimrie/DeepDECS/tree/augment-tool" target="_blank">here</a>.</p>
     </div>
-
-    <div class="pad-left"> 
-      <big><big><big><big><big><big><big><big><big><big><big><big>
-        <span>&#10509;</span>
-      </big></big></big></big></big></big></big></big></big></big></big></big> 
-      <embed src="images/generic-pDTMC-with-DNN-perception.pdf" width="500" height="375" type="application/pdf"/>
+    <div class="pdf-aug">
+      <embed style='height: 100%; width: 15%; object-fit: contain' src="images/arrow.png"/>
+      <embed src="images/generic-pDTMC-with-DNN-perception.pdf" width="80%" height="350px" type="application/pdf"/>
     </div>
-
   </div>
 </div>
 
 
 <!-- Grid 3: Tutorial -->
 <div class="w3-row-padding w3-padding-32 w3-container">
-  <div class="row">
+  <div class="row centre-div">
     <div class="text-left">
       <h1>DeepDECS Tutorial</h1>
       <h5 class="w3-padding-4">How fast to drive on <i>potential</i> ice?</h5>
 
       <p class="w3-text-grey">Say you have a autonomous car driving down a road and the car is equipped with a perception unit (a DNN). The aim of the perception unit is to determine if the next segment of road is icy or not. Having this information is invaluable as the car should not drive fast on icy roads, but the perception unit is not perfect so how do we best ascertain a safety critical controller? To demonstrate DeepDECS you can download the tutorial from the right which uses the above as a toy example.</p>
     </div>
-    <div class="w3-center button-centre">
+    <div class="w3-center image-centre">
       <form method="get" action="tutorial/DeepDecs_tutorial.pdf">
         <button type="submit" class="w3-button w3-black w3-xlarge">Download Tutorial</button>
       </form>
@@ -175,15 +162,15 @@ div.centre-div
 
 <!-- Grid 4: Case Studies -->
 <div class="w3-light-grey w3-padding-32 w3-container">
-  <div class="row">
+  <div class="row centre-div">
     <div class="image-left w3-center">
       <div>
-        <video width="563" height="422" controls>
+        <video width="95%" height="95%" controls>
           <source src="videos/robot_warehouse.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <br/>
-        <embed src="images/SafeSCAD-system.png" width="563" height="377"/>
+        <embed src="images/SafeSCAD-system.png" width="95%" height="95%"/>
       </div>
     </div>
     <div class="text-right">
