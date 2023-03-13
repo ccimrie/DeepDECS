@@ -15,32 +15,25 @@ module ManagedComponents
 endmodule
 
 
-const double pVerif0WhenClass0 = 0.6220103240607973;
-const double pVerif0WhenClass1 = 0.6936936936936937;
-const double pVerif1WhenClass0 = 0.37798967593920274;
-const double pVerif1WhenClass1 = 0.3063063063063063;
+const double pVerif0WhenClass0 = 0.39230964291477444;
+const double pVerif0WhenClass1 = 0.5584415584415584;
+const double pVerif1WhenClass0 = 0.6076903570852256;
+const double pVerif1WhenClass1 = 0.44155844155844154;
 
-const double pClass0AsClass0Verif0 = 0.22391018695682244;
-const double pClass0AsClass1Verif0 = 0.7760898130431776;
-const double pClass1AsClass0Verif0 = 0.9051770147660558;
-const double pClass1AsClass1Verif0 = 0.09482298523394414;
+const double pClass0AsClass0Verif0 = 0.5036432013162534;
+const double pClass0AsClass1Verif0 = 0.4963567986837466;
+const double pClass1AsClass0Verif0 = 0.11245619624084104;
+const double pClass1AsClass1Verif0 = 0.887543803759159;
 
-const double pClass0AsClass0Verif1 = 0.04802549220439285;
-const double pClass0AsClass1Verif1 = 0.9519745077956071;
-const double pClass1AsClass0Verif1 = 0.927477840451249;
-const double pClass1AsClass1Verif1 = 0.072522159548751;
+const double pClass0AsClass0Verif1 = 0.9519745077956071;
+const double pClass0AsClass1Verif1 = 0.04802549220439285;
+const double pClass1AsClass0Verif1 = 0.072522159548751;
+const double pClass1AsClass1Verif1 = 0.927477840451249;
 module EnvironmentMonitor
   k2 : [1..2] init 1;
   v : [0..1] init 0;
 	k : [1..2] init 1; //1:not on collision course (occ), 2:occ
-	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+
-(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+
-pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+
-pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+
-pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+
-pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2);
+	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2);
 endmodule
 
 

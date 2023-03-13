@@ -22,25 +22,18 @@ const double pVerif1WhenClass1 = 0.6948941469489415;
 
 const double pClass0AsClass0Verif0 = 0.5089738735327527;
 const double pClass0AsClass1Verif0 = 0.49102612646724725;
-const double pClass1AsClass0Verif0 = 0.8303206997084548;
-const double pClass1AsClass1Verif0 = 0.16967930029154518;
+const double pClass1AsClass0Verif0 = 0.16967930029154518;
+const double pClass1AsClass1Verif0 = 0.8303206997084548;
 
-const double pClass0AsClass0Verif1 = 0.09915821568237555;
-const double pClass0AsClass1Verif1 = 0.9008417843176244;
-const double pClass1AsClass0Verif1 = 0.9380440348182284;
-const double pClass1AsClass1Verif1 = 0.061955965181771634;
+const double pClass0AsClass0Verif1 = 0.9008417843176244;
+const double pClass0AsClass1Verif1 = 0.09915821568237555;
+const double pClass1AsClass0Verif1 = 0.061955965181771634;
+const double pClass1AsClass1Verif1 = 0.9380440348182284;
 module EnvironmentMonitor
   k2 : [1..2] init 1;
   v : [0..1] init 0;
 	k : [1..2] init 1; //1:not on collision course (occ), 2:occ
-	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+
-(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+
-pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+
-pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+
-pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+
-pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2);
+	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2);
 endmodule
 
 
@@ -50,6 +43,12 @@ const double x1Verif1;
 const double x2Verif0;
 const double x2Verif1;
 
+module Controller
+	wait : bool init false;
+	[decide] t=3 & k2=1 & v=0 ->  x1Verif0:(wait'=true) + (1-x1Verif0):(wait'=false);
+	[decide] t=3 & k2=1 & v=1 ->  x1Verif1:(wait'=true) + (1-x1Verif1):(wait'=false);
+	[decide] t=3 & k2=2 & v=0 ->  x2Verif0:(wait'=true) + (1-x2Verif0):(wait'=false);
+	[decide] t=3 & k2=2 & v=1 ->  x2Verif1:(wait'=true) + (1-x2Verif1):(wait'=false);
 endmodule
 
 module Turn

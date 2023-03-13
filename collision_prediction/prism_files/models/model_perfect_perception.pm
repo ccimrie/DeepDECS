@@ -19,8 +19,8 @@ module EnvironmentMonitor
 	[monitor] t=2 -> (1-pocc):(k'=1) + pocc:(k'=2);
 endmodule
 
-const double x1; // prob. of waiting when occ
-const double x2; // prob. of waiting when not occ
+const double x1; // prob. of waiting when not occ
+const double x2; // prob. of waiting when occ
 
 module Controller
 	wait : bool init false;

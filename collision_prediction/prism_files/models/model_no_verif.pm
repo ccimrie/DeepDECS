@@ -14,10 +14,10 @@ module ManagedComponents
 	[end] t=1 & z=4 -> 1:(z'=4);
 endmodule
 
-const double pClass0AsClass0=0.22391018695682244;
-const double pClass0AsClass1=0.7760898130431776;
-const double pClass1AsClass0=0.9051770147660558;
-const double pClass1AsClass1=0.09482298523394414;
+const double pClass0AsClass0=0.7760898130431776;
+const double pClass0AsClass1=0.22391018695682244;
+const double pClass1AsClass0=0.09482298523394414;
+const double pClass1AsClass1=0.9051770147660558;
 
 module EnvironmentMonitor
   k2 : [1..2] init 1;
@@ -27,13 +27,13 @@ endmodule
 
 
 
-const double x1; // prob. of waiting when occ
-const double x2; // prob. of waiting when not occ
+const double x1; // prob. of waiting when not occ
+const double x2; // prob. of waiting when occ
 
 module Controller
 	wait : bool init false;
-	[reaction] t=3 & k2=1 -> x1:(wait'=true) + (1-x1):(wait'=false);
-	[reaction] t=3 & k2=2 -> x2:(wait'=true) + (1-x2):(wait'=false);
+	[decide] t=3 & k2=1 -> x1:(wait'=true) + (1-x1):(wait'=false);
+	[decide] t=3 & k2=2 -> x2:(wait'=true) + (1-x2):(wait'=false);
 endmodule
 
 module Turn

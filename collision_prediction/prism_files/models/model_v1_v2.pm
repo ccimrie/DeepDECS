@@ -45,24 +45,9 @@ const double pClass1AsClass0Verif3 = 0.072522159548751;
 const double pClass1AsClass1Verif3 = 0.927477840451249;
 module EnvironmentMonitor
   k2 : [1..2] init 1;
-  v : [0..1] init 0;
+  v : [0..3] init 0;
 	k : [1..2] init 1; //1:not on collision course (occ), 2:occ
-	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+
-(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+
-pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+
-pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+
-(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+
-pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+
-pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2)+
-(1-pocc)*pVerif2WhenClass0*pClass0AsClass0Verif2:(k'=1)&(v'=2)&(k2'=1)+
-(1-pocc)*pVerif2WhenClass0*pClass0AsClass1Verif2:(k'=1)&(v'=2)&(k2'=2)+
-pocc*pVerif2WhenClass1*pClass1AsClass0Verif2:(k'=2)&(v'=2)&(k2'=1)+
-pocc*pVerif2WhenClass1*pClass1AsClass1Verif2:(k'=2)&(v'=2)&(k2'=2)+
-(1-pocc)*pVerif3WhenClass0*pClass0AsClass0Verif3:(k'=1)&(v'=3)&(k2'=1)+
-(1-pocc)*pVerif3WhenClass0*pClass0AsClass1Verif3:(k'=1)&(v'=3)&(k2'=2)+
-pocc*pVerif3WhenClass1*pClass1AsClass0Verif3:(k'=2)&(v'=3)&(k2'=1)+
-pocc*pVerif3WhenClass1*pClass1AsClass1Verif3:(k'=2)&(v'=3)&(k2'=2);
+	[monitor] t=2 -> (1-pocc)*pVerif0WhenClass0*pClass0AsClass0Verif0:(k'=1)&(v'=0)&(k2'=1)+(1-pocc)*pVerif0WhenClass0*pClass0AsClass1Verif0:(k'=1)&(v'=0)&(k2'=2)+pocc*pVerif0WhenClass1*pClass1AsClass0Verif0:(k'=2)&(v'=0)&(k2'=1)+pocc*pVerif0WhenClass1*pClass1AsClass1Verif0:(k'=2)&(v'=0)&(k2'=2)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass0Verif1:(k'=1)&(v'=1)&(k2'=1)+(1-pocc)*pVerif1WhenClass0*pClass0AsClass1Verif1:(k'=1)&(v'=1)&(k2'=2)+pocc*pVerif1WhenClass1*pClass1AsClass0Verif1:(k'=2)&(v'=1)&(k2'=1)+pocc*pVerif1WhenClass1*pClass1AsClass1Verif1:(k'=2)&(v'=1)&(k2'=2)+(1-pocc)*pVerif2WhenClass0*pClass0AsClass0Verif2:(k'=1)&(v'=2)&(k2'=1)+(1-pocc)*pVerif2WhenClass0*pClass0AsClass1Verif2:(k'=1)&(v'=2)&(k2'=2)+pocc*pVerif2WhenClass1*pClass1AsClass0Verif2:(k'=2)&(v'=2)&(k2'=1)+pocc*pVerif2WhenClass1*pClass1AsClass1Verif2:(k'=2)&(v'=2)&(k2'=2)+(1-pocc)*pVerif3WhenClass0*pClass0AsClass0Verif3:(k'=1)&(v'=3)&(k2'=1)+(1-pocc)*pVerif3WhenClass0*pClass0AsClass1Verif3:(k'=1)&(v'=3)&(k2'=2)+pocc*pVerif3WhenClass1*pClass1AsClass0Verif3:(k'=2)&(v'=3)&(k2'=1)+pocc*pVerif3WhenClass1*pClass1AsClass1Verif3:(k'=2)&(v'=3)&(k2'=2);
 endmodule
 
 
