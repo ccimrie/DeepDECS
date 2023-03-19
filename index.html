@@ -104,6 +104,7 @@ div.centre-div
   <h1 class="w3-margin w3-large"><a href="https://www-users.york.ac.uk/~rcc516/" target="_blank">Radu Calinescu</a>, <a href="https://www.cs.york.ac.uk/people/?group=All%20Staff&username=cimrie" target="_blank"> Calum Imrie</a>, <a href=" https://www.andrew.cmu.edu/user/rmangal/" target="_blank">Ravi Mangal</a>, <a href="https://genaina.github.io/" target="_blank">Genaína Nunes Rodrigues</a>, <a href="https://www.andrew.cmu.edu/user/pcorina/" target="_blank">Corina P<span>&#259;</span>s<span>&#259;</span>reanu</a>, Misael Alpizar Santana, and Gricel Vázquez</h1>
   <!-- <p class="w3-xlarge">Template by w3.css</p> -->
   <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button> -->
+  <h1 class="w3-margin w3-large"><a href="https://www.github.com/ccimrie/DeepDECS" target="_blank">Github repo</a></h1>
 </header>
 
 <!-- Grid 1: DeepDECS -->
@@ -113,9 +114,9 @@ div.centre-div
       <h1>DeepDECS</h1>
       <h5 class="w3-padding-4">Framework for safer controllers</h5>
 
-      <p class="w3-text-grey">Autonomous systems have been utilising deep neural networks (DNNs) to perceive the world around them. However, no DNN is ever perfect, which can be devastating in safety-critical applications. DeepDECS is a developed solution able to capture the uncertainty of DNN perception components through the use of robustness verification methods From this DeepDECS produces safe autonomous system controllers for such applications.</p>
+      <p class="w3-text-grey">Autonomous systems have been utilising deep neural networks (DNNs) to perceive the world around them. However, no DNN is perfect, which can be devastating in safety-critical applications. DeepDECS is a developed solution able to capture the uncertainty of DNN perception components through the use of robustness verification methods. From this, DeepDECS produces safe autonomous system controllers for such applications.</p>
 
-      <p class="w3-text-grey">The diagram on the right is the DeepDECS framework, and as can be seen DeepDECS requires four components from the user. First a discrete time Markov Chain (DTMC) of the application the autonomous system is to operate within, and second a requirements file defined via probabilistic computation tree logic (PCTL) notation. It is important to note that the DTMC provided will assume that the perception of the system is perfect. Lastly a pre trained perception DNN to be utilised in the autonomous system, and along an accompanying representative test dataset. These last two components are utilised, along with \(n\) verification methods, in step 1 of DeepDECS to derive a set of \(2^{n}\) confusion matrices. The accuracy derived from the confusion matrices will be the probabilities for our generated augmented DTMC, step 2 of DeepDECS. Our augmented model now contains an accurate representation of the imperfect perception unit. Step 3 of DeepDECS is controller synthesis, achieved via formal methods with the augmented DTMC and PCTL requirements.</p>
+      <p class="w3-text-grey">The diagram on the right is the DeepDECS framework, highlighting the requirements of four components from the user. The first is a Discrete Time Markov Chain (DTMC) of the application, which the autonomous system is to operate within, and second is a requirements file defined via Probabilistic Computation Tree Logic (PCTL) notation. It is important to note that the DTMC provided will assume that the perception of the system is perfect. Lastly, a pre-trained perception DNN is to be utilised in the autonomous system, along with an accompanying representative test dataset. These last two components are utilised, along with \(n\) verification methods, in step 1 of DeepDECS to derive a set of \(2^{n}\) confusion matrices. The accuracy derived from the confusion matrices will be the probabilities for our generated augmented DTMC, step 2 of DeepDECS. Our augmented model now contains an accurate representation of the imperfect perception unit. Step 3 of DeepDECS is controller synthesis, achieved via formal methods with the augmented DTMC and PCTL requirements.</p>
     </div>
     <div class="w3-center image-centre">
       <embed style='height: 95%; width: 95%; object-fit: contain' src="images/DeepDECS-approach.png"/>
@@ -133,7 +134,7 @@ div.centre-div
     <div class="text-middle">
       <h1>Augment Tool</h1>
       <h5 class="w3-padding-4">Incorporating uncertainty</h5>
-      <p class="w3-text-grey">An augmentation tool was created to generate the parametric DTMC (pDTMC) from the perfect perception pDTMC and the confusion matrices generated from step 1 of DeepDECS. For the tool to work it needs to follow the structure displayed on the left, and it will output the structure on the right. The tool along with more details can be found <a href="https://github.com/ccimrie/DeepDECS/tree/augment-tool" target="_blank">here</a>.</p>
+      <p class="w3-text-grey">An <a href="https://github.com/ccimrie/DeepDECS/tree/augment-tool" target="_blank">augmentation tool</a> was created to generate the parametric DTMC (pDTMC) to synthesise the pareto optimal controllers. The tool requires a perfect perception pDTMC and the confusion matrices generated from step 1 of DeepDECS. The perfect perception pDTMC needs to follow the structure displayed on the left, and the augment tool will output the structure on the right.</p>
     </div>
     <div class="pdf-aug">
       <embed style='height: 100%; width: 15%; object-fit: contain' src="images/arrow.png"/>
@@ -150,7 +151,7 @@ div.centre-div
       <h1>DeepDECS Tutorial</h1>
       <h5 class="w3-padding-4">How fast to drive on <i>potential</i> ice?</h5>
 
-      <p class="w3-text-grey">Say you have an autonomous car driving down a road and the car is equipped with a perception unit (a DNN). The aim of the perception unit is to determine if the next segment of road is icy or not. Having this information is invaluable as the car should not drive fast on icy roads, but the perception unit is not perfect so how do we best ascertain a safety critical controller? To demonstrate DeepDECS you can download the tutorial from the right which uses the above as a toy example.</p>
+      <p class="w3-text-grey">Say you have an autonomous car driving down a road and the car is equipped with a perception unit (i.e. a DNN). The aim of the perception unit is to determine if the next segment of road is icy or not. Having this information is invaluable as the car should not drive fast on icy roads, but the perception unit is not perfect so how do we best ascertain a safety critical controller? To demonstrate DeepDECS you can download the tutorial from the right which uses the presented scenario as a toy example.</p>
     </div>
     <div class="w3-center image-centre">
       <form method="get" action="tutorial/DeepDecs_tutorial.pdf">
