@@ -41,7 +41,7 @@ b2Body* defineBody(b2Body* particle, double radius, double density, double frict
 
 int main(int argc, char** argv)
 {
-    int data_size=std::stoi(argv[1]);
+    // int data_size=std::stoi(argv[1]);
 
     B2_NOT_USED(argc);
     B2_NOT_USED(argv);

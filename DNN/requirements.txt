@@ -1,8 +1,0 @@
-tensorflow
-pandas
-sklearn
-netcal==1.1.3
-scriptify
-matplotlib
-statsmodels
-tensorflow-probability 
