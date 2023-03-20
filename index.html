@@ -111,7 +111,7 @@ a:visited {
   <h1 class="w3-xxlarge">Discrete-Event Controller Synthesis for Autonomous Systems with
   <br>
   Deep-Learning Perception Components</h1>
-  <h1 class="w3-margin w3-xlarge"><a href="https://www-users.york.ac.uk/~rcc516/" target="_blank" style='color: white;'>Radu Calinescu</a>, <a href="https://www.cs.york.ac.uk/people/?group=All%20Staff&username=cimrie" target="_blank" style='color: white;'> Calum Imrie</a>, <a href=" https://www.andrew.cmu.edu/user/rmangal/" target="_blank" style='color: white;'>Ravi Mangal</a>, <a href="https://genaina.github.io/" target="_blank" style='color: white;'>Genaína Nunes Rodrigues</a>, <a href="https://www.andrew.cmu.edu/user/pcorina/" target="_blank" style='color: white;'>Corina P<span>&#259;</span>s<span>&#259;</span>reanu</a>, Misael Alpizar Santana, and <a href="" target="_blank" style='color: white;'>Gricel Vázquez</a></h1>
+  <h1 class="w3-margin w3-xlarge"><a href="https://www-users.york.ac.uk/~rcc516/" target="_blank" style='color: white;'>Radu Calinescu</a>, <a href="https://www.cs.york.ac.uk/people/?group=All%20Staff&username=cimrie" target="_blank" style='color: white;'> Calum Imrie</a>, <a href=" https://www.andrew.cmu.edu/user/rmangal/" target="_blank" style='color: white;'>Ravi Mangal</a>, <a href="https://genaina.github.io/" target="_blank" style='color: white;'>Genaína Nunes Rodrigues</a>, <a href="https://www.andrew.cmu.edu/user/pcorina/" target="_blank" style='color: white;'>Corina P<span>&#259;</span>s<span>&#259;</span>reanu</a>, Misael Alpizar Santana, and <a href="https://www.cs.york.ac.uk/people/?group=Research%20Students&username=gricel" target="_blank" style='color: white;'>Gricel Vázquez</a></h1>
   <!-- <p class="w3-xlarge">Template by w3.css</p> -->
   <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button> -->
   <!-- <h1 class="w3-margin w3-large"><a href="https://www.github.com/ccimrie/DeepDECS" target="_blank">Github repo</a></h1> -->
@@ -162,10 +162,10 @@ a:visited {
       <h1>Case studies</h1>
       <h5 class="w3-padding-4">Mobile robot collision limitation</h5>
       <p class="w3-text-grey"><!-- The first case study consists of a robot in a warehouse where it must travel from one point to another in a known map. The robot navigates by traversing waypoints, and finds the shortest route using Dijkstra's algorithm. The robot, however, is not the only agent operating in the warehouse, and now the robot must also minimise dangerous collisions. At each waypoint the robot first detects if a collider is present, and if so uses a DNN to predict whether a collision will occur if the robot proceeds. The video on the left shows the robot utilising a safe controller synthesised from the DeepDECS framework. -->
-        Inspired by recent research on DNN-based for autonomous aircraft, marine vehicles, and robots, we used DeepDECS to develop a mobile robot collision-limitation controller. We considered a robot travelling between locations A and B  via waypoints(see left), where the robot may encounter and potentially collide with another moving agent. As such, the robot uses DNN perception at each waypoint, to assess if it is on a collision course. The DNN uses as input the distance between the robot and collider (\(x\), \(y\)), the linear and angular velocity of the collider (\(s\), \(\dot{\theta}\)), and the initial heading of the collider (\(\theta\)). The input values are all relative to the robot's local reference frame. Based on the DNN output, its controller decides whether the robot will proceed to the next waypoint or should wait for a while at its current one. The requirements for the robot is to minimise the time and minimise the risk of a dangerous collision when travelling between two waypoints.
+        Inspired by recent research on the integration of DNNs with a wide variety of autonomous systems we used DeepDECS to develop a mobile robot collision-limitation controller. We considered a robot travelling between locations A and B  via waypoints(see left), where the robot may encounter and potentially collide with another moving agent. As such, the robot uses DNN perception at each waypoint, to assess if it is on a collision course. The DNN's inputs are the distance between the robot and collider (\(x\), \(y\)), the linear and angular velocity of the collider (\(s\), \(\dot{\theta}\)), and the initial heading of the collider (\(\theta\)). The input values are all relative to the robot's local reference frame. Based on the DNN output, its controller decides whether the robot will proceed to the next waypoint or should wait for a while at its current one. The requirements for the robot is to minimise the time and minimise the risk of a dangerous collision when travelling between two waypoints.
       </p>
       <p class="w3-text-grey">
-        Clicking on the camera icon on the left will open a video visualising a simulation of a robot travelling between two locations using a controller synthesised by the DeepDECS process. 
+        Clicking on the camera icon on the left will open a video visualising a simulation of a robot travelling between two locations using a controller synthesised by the DeepDECS process.
       </p>
     </div>
   </div>
@@ -177,9 +177,7 @@ a:visited {
         <h5 class="w3-padding-4">Driver-attentiveness management</h5>
         <p class="w3-text-grey">
           <!-- The second case study focused on <a href="https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/" target="_blank">shared control in autonomous driving</a>, see the image on the left. Given the complexity there will be times while driving that the autonomous car will not be able to operate, thus will need to transfer control to the human driver. This therefore requires the human driver to be alert at all times should a transfer of control be required. The car predicts the human driver's attentiveness using a DNN, and needs to decide which alerts to use if the human driver is not paying attention, such as lights, vibration and sound. For this case study real data was used of human drivers in a simulated scenario. -->
-          We used DEEPDECS to design a proof-of-concept driver-attentiveness management system for shared-control autonomous cars. Developed as part of our <a href="https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/" target="_blank">SafeSCAD</a> project and inspired by the first United Nations regulation on vehicles with Level 3 automation, this system uses: (i) specialised sensors to monitor key car parameters (velocity, lane position, etc.) and driver’s biometrics (eye movement, heart rate, etc.), (ii) a three-class DNN to predict the driver’s response to a request to resume manual driving, and (iii) a deterministic controller to issue visual/acoustic/haptic alerts when the driver is insufficiently attentive. We used an existing DNN trained and validated with driver data from a SafeSCAD user study performed within a driving simulator (<a href="https://dl.acm.org/doi/fullHtml/10.1145/3411764.3445563" target="_blank">DeepTake</a>), with the test dataset used for our DNN uncertainty quantification obtained from the same study. The requirements for the controller is to minimise the risk, which is dependant upon the driver's attentiveness level, and to minimise the nuisance caused to the driver through the usage of alerts.
-
-          The controller requirements comprise two constraints that limit the maximum expected risk and driver nuisance cumulated over a 45-minute driving trip.
+          We used DEEPDECS to design a proof-of-concept driver-attentiveness management system for shared-control autonomous cars. Developed as part of our <a href="https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/" target="_blank">SafeSCAD</a> project and inspired by the first United Nations regulation on vehicles with Level 3 automation, this system uses: (i) specialised sensors to monitor key car parameters (velocity, lane position, etc.) and driver’s biometrics (eye movement, heart rate, etc.), (ii) a three-class DNN to predict the driver’s response to a request to resume manual driving, and (iii) a deterministic controller to issue visual/acoustic/haptic alerts when the driver is insufficiently attentive. We used an existing DNN (<a href="https://dl.acm.org/doi/fullHtml/10.1145/3411764.3445563" target="_blank">DeepTake</a>) trained and validated with driver data from a SafeSCAD user study performed within a driving simulator, with the test dataset used for our DNN uncertainty quantification obtained from the same study. The requirements for the controller is to minimise the risk, which is dependant upon the driver's attentiveness level, and to minimise the nuisance caused to the driver through the usage of alerts.
         </p>    
     </div>
   </div>
@@ -190,48 +188,24 @@ a:visited {
   <div class="row centre-div">
     <div class="text-left">
       <h1>Github repository</h1>
-      <!-- <h5 class="w3-padding-4">How fast to drive on <i>potential</i> ice?</h5> -->
       <p class="w3-text-grey">
-        A tool that automates the model augmentation from Stage 2 of DeepDECS, a DeepDECS tutorial, and all the models, DNNs, datasets, etc from the two case studies are freely available in our <a href="https://github.com/ccimrie/DeepDECS" target="_blank">Github repo</a>.
+        An <a href="https://github.com/ccimrie/DeepDECS/tree/master/augment_tool" target="_blank">augment tool</a> that automates Stage 2 of DeepDECS, a <a href="https://github.com/ccimrie/DeepDECS/tree/master/tutorial" target="_blank">DeepDECS tutorial</a>, and all the models, DNNs, datasets, etc from the two case studies are freely available in our <a href="https://github.com/ccimrie/DeepDECS" target="_blank">Github repo</a>.
       </p>
-      <p class="w3-text-grey">For more detail on the case studies you can read the paper. Access to the code and models can be found on this <a href="https://www.github.com/ccimrie/DeepDECS" target="_blank"> repo</a>.</p>
     </div>
-    <!-- <div class="w3-center image-centre">
-      <form method="get" action="tutorial/DeepDECS_tutorial.pdf">
-        <button type="submit" class="w3-button w3-black w3-xlarge">Download Tutorial</button>
-      </form>
-    </div> -->
   </div>
 </div>
 
-
-<!-- <p class="w3-text-grey">This project has received funding from the UKRI project ‘Trustworthy Autonomous Systems Node in Resilience’, the UKRI Global Research and Innovation Programme, and the Assuring Autonomy International Programme. The authors are grateful to the developers of the DeepTake deep neural network25 for sharing the DeepTake data sets, and to the University of York’s Viking research computing cluster team for providing access to their systems.</p> -->
-
-<!-- Grid 3: Augment tool -->
-<!-- <div class="w3-light-grey w3-padding-32 w3-container">
+<div class="w3-light-grey w3-padding-32 w3-container w3-large">
   <div class="row centre-div">
-    <div class="pdf-aug">
-      <embed src="images/generic-pDTMC.pdf" width="80%" height="350px" type="application/pdf"/>
-      <embed style='height: 100%; width: 15%; object-fit: contain' src="images/arrow.png"/>
-    </div>
-    <div class="text-middle">
-      <h1>Augment Tool</h1>
-      <h5 class="w3-padding-4">Incorporating uncertainty</h5>
-      <p class="w3-text-grey">An <a href="https://github.com/ccimrie/DeepDECS/tree/augment-tool" target="_blank">augmentation tool</a> was created to generate the parametric DTMC (pDTMC) to synthesise the pareto optimal controllers. The tool requires a perfect perception pDTMC and the confusion matrices generated from step 1 of DeepDECS. The perfect perception pDTMC needs to follow the structure displayed on the left, and the augment tool will output the structure on the right.</p>
-    </div>
-    <div class="pdf-aug">
-      <embed style='height: 100%; width: 15%; object-fit: contain' src="images/arrow.png"/>
-      <embed src="images/generic-pDTMC-with-DNN-perception.pdf" width="80%" height="350px" type="application/pdf"/>
+    <div class="text-right">
+      <h1 align=right>Acknowledgements</h1>
+      <p class="w3-text-grey">
+       This project has received funding from the UKRI project ‘Trustworthy Autonomous Systems Node in Resilience’, the UKRI Global Research and Innovation Programme, and the Assuring Autonomy International Programme. The authors are grateful to the developers of the DeepTake deep neural network for sharing the DeepTake data sets, and to the University of York’s Viking research computing cluster team for providing access to their systems.
+      </p>
     </div>
   </div>
-</div> -->
+</div>
 
-
-
-
-<!-- <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
-</div> -->
 
 <!-- Footer -->
 <!-- <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
