@@ -1,0 +1,6 @@
+// The cumulated risk reward along the driveFast action until 1000 time units have elapsed.
+R{"risk"}=? [ C<=1000 ]
+
+// The cumulated distance reward along the driveFast and driveSlow actions until 1000 time units have elapsed.
+R{"distance"}=? [ C<=1000 ]
+
