@@ -112,12 +112,27 @@ div.centre-div
 <div class="w3-padding-32 w3-container">
   <div class="row centre-div">
     <div class="text-left">
-      <h1>DeepDECS</h1>
-      <h5 class="w3-padding-4">Framework for safer controllers</h5>
+      <!-- h1>DeepDECS</h1>
+      <h5 class="w3-padding-4">Framework for safer controllers</h5 -->
 
-      <p class="w3-text-grey">Autonomous systems have been utilising deep neural networks (DNNs) to perceive the world around them. However, no DNN is perfect, which can be devastating in safety-critical applications. DeepDECS is a developed solution able to capture the uncertainty of DNN perception components through the use of robustness verification methods. From this, DeepDECS produces safe autonomous system controllers for such applications.</p>
+      <p class="w3-text-grey">Many autonomous systems use deep neural networks (DNNs) to perceive the world around them. 
+             However, no DNN is perfect, which can be devastating in safety-critical applications. 
+             DeepDECS is a controller synthesis method that captures the uncertainty of DNN perception components 
+             through the use of DNN verification techniques. 
+             From this, it produces correct-by-construction controllers for such autonomous systems.</p>
 
-      <p class="w3-text-grey">The diagram on the right is the DeepDECS framework, highlighting the requirements of four components from the user. The first is a Discrete Time Markov Chain (DTMC) of the application, which the autonomous system is to operate within, and second is a requirements file defined via Probabilistic Computation Tree Logic (PCTL) notation. It is important to note that the DTMC provided will assume that the perception of the system is perfect. Lastly, a pre-trained perception DNN is to be utilised in the autonomous system, along with an accompanying representative test dataset. These last two components are utilised, along with \(n\) verification methods, in step 1 of DeepDECS to derive a set of \(2^{n}\) confusion matrices. The accuracy derived from the confusion matrices will be the probabilities for our generated augmented DTMC, step 2 of DeepDECS. Our augmented model now contains an accurate representation of the imperfect perception unit. Step 3 of DeepDECS is controller synthesis, achieved via formal methods with the augmented DTMC and PCTL requirements.</p>
+      <p class="w3-text-grey">The diagram on the right depicts the DeepDECS controller synthesis process, 
+             including its four inputs. The first is a discrete-time Markov Chain (DTMC) modelling the behaviour of the
+             autonomous system within its application (assuming perfect perception); the second is a set of requirements specified in probabilistic computation tree logic (PCTL). 
+             The third input is a pre-trained perception DNN that will be utilised in the autonomous system, 
+             and the fourth is a representative test dataset for this DNN. 
+             These last two inputs are utilised, along with \(n\) verification methods, 
+             in Stage 1 ('DNN uncertainty quantification') of DeepDECS to derive a set of \(2^{n}\) confusion matrices. 
+             These confusion matrices are then used to estimate the DNN classification/misclassification probabilities  
+             for an augmented, DNN-perception DTMC obtained automatically in Stage 2 ('Model augmentation') of DeepDECS. 
+             The augmented model contains an accurate representation of the imperfect DNN perception component. 
+             Finally, Stage 3 ('Controller synthesis') of DeepDECS employs probabilisitc model checking techniques
+             to generate the autonomous system controller synthesis.</p>
     </div>
     <div class="w3-center image-centre">
       <embed style='height: 95%; width: 95%; object-fit: contain' src="images/DeepDECS-approach.png"/>
