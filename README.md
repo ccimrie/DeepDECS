@@ -1,4 +1,4 @@
-### Discrete-Event Controller Synthesis for Autonomous Systems with Deep-Learning Perception Components
+#### Discrete-Event Controller Synthesis for Autonomous Systems with Deep-Learning Perception Components
 
 This repo contains the following supplementary material:
 
