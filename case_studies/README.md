@@ -6,7 +6,7 @@ There are two case studies explored:
 
 - A robot mitigating collisions with a DNN to predict said collisions
 
-- [Perceiving a human driver's state while in a self-driving car](https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/)
+- Perceiving a human driver's state while in a self-driving car; this was within the [SafeSCAD](https://www.york.ac.uk/assuring-autonomy/demonstrators/autonomous-driving/) project scope 
 
 The **DNN** contains the DNN used for both setups. The specific models trained can be found in the respective directories. Please refer to the individual directories for more details on running the separate experiments.
 
